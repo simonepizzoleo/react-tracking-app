@@ -38,7 +38,7 @@ function Expenses(props) {
             <section className="tracking-container__expenses">
 
                 <SingleExpense
-                    title="There's nothing to see here!"
+                    title={ `There's nothing to see in ! ` }
                     description="Add an Expense below to start seeing your payments and earnings."
                 />
 

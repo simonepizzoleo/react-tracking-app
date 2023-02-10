@@ -38,6 +38,7 @@ class Container extends Component {
     // Set the first Category as Active
     componentDidMount() {
 
+        // Set the first Category as Active
         if (this.state.categories.length <= 0) return;
         
         this.setState({
