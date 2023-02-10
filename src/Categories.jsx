@@ -45,11 +45,15 @@ function Categories(props) {
 
             </ul>
             
-            <AddCategoryPopup
-                popupState={ popupState }
-                addNewCategory={ props.addNewCategory }
-                closePopup={ closePopup }
-            />
+            { popupState === true ? 
+
+                <AddCategoryPopup
+                    popupState={ popupState }
+                    addNewCategory={ props.addNewCategory }
+                    closePopup={ closePopup }
+                />
+
+            : '' }
 
         </>
 

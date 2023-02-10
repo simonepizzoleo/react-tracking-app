@@ -1,11 +1,18 @@
 // Imports
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './tracking.css';
 
 // Element
 function AddCategoryPopup(props) {
 
     let [name, setName] = useState('');
+
+    // Store the Name Input in a Reference
+    const nameInput = useRef(null);
+
+    useEffect(() => {
+        nameInput.current.focus();
+    });
 
     // Handle the Submit
     function handleSubmit() {
@@ -26,16 +33,15 @@ function AddCategoryPopup(props) {
     
     }
 
-    // Render the Element
+    // Close the Popup if 'Esc' gets pressed
     document.addEventListener('keydown', (event) => {
         
         if (event.key !== 'Escape') return;
         props.closePopup();
-    
+        
     });
-
-    if (props.popupState === false) return;
-
+    
+    // Render the Element
     return (
 
         <div className="add-category-popup__overlay">
@@ -53,6 +59,7 @@ function AddCategoryPopup(props) {
                 <div className="add-category-popup__flexbox">
 
                     <input
+                        ref={ nameInput }
                         className="add-category-popup__input"
                         type="text"
                         placeholder="Shopping, Sports, Clothing..."

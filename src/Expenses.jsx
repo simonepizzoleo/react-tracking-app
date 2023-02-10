@@ -1,5 +1,6 @@
 // Imports
 import React from 'react';
+import SingleExpense from './SingleExpense';
 import './tracking.css';
 
 // Element
@@ -13,24 +14,12 @@ function Expenses(props) {
     // Determine the Markup of the Expense
     activeExpenses = activeExpenses.map(expense => {
 
-        const expenseCssClass = (expense.cost < 0) ? 'negative' : '';
-        const expenseCost = (expense.cost < 0) ? '😢' : '💵';
-
         return (
         
-            <li
+            <SingleExpense
                 key={ expense.id }
-                className={ `tracking-container__expense ${expenseCssClass}` }
-            >
-
-                <div className={`tracking-container__expense-icon`}> { expenseCost } </div>
-                
-                <article className="tracking-container__expense-content">
-                    <h3 className="tracking-container__expense-title"> { expense.value } </h3>
-                    <span className="tracking-container__expense-cost"> { expense.cost } $ </span>
-                </article>
-
-            </li>
+                expense={ expense }
+            />
         
         );
 
@@ -42,7 +31,22 @@ function Expenses(props) {
         return expense.categoryId === props.activeCategory;
     });
 
-    if (NO_EXPENSES_TO_SHOW === undefined) return;
+    if (NO_EXPENSES_TO_SHOW === undefined) {
+        
+        return (
+
+            <section className="tracking-container__expenses">
+
+                <SingleExpense
+                    title="There's nothing to see here!"
+                    description="Add an Expense below to start seeing your payments and earnings."
+                />
+
+            </section>
+
+        );
+
+    }
 
     // Render the Element
     return <section className="tracking-container__expenses"> { activeExpenses } </section>;

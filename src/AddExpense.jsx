@@ -18,7 +18,9 @@ function AddExpense(props) {
     function storeExpense() {
 
         cost = (cost === 0 || !cost) ? 0 : cost;
+
         value = value.trim();
+        cost = Number(cost);
 
         if (!value || Number.isNaN(cost)) return;
 

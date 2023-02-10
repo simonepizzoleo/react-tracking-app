@@ -65,7 +65,7 @@ class Container extends Component {
             id: uniqid(),
             categoryId: activeCategory,
             value,
-            cost
+            cost: cost.toString()
         };
 
         this.setState({
@@ -83,7 +83,8 @@ class Container extends Component {
         };
 
         this.setState({
-            categories: [...this.state.categories, NEW_CATEGORY]
+            categories: [...this.state.categories, NEW_CATEGORY],
+            activeCategory: NEW_CATEGORY.id
         });
 
     }
