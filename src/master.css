@@ -1,0 +1,26 @@
+/* Reset */
+
+html,
+body {
+    margin: unset;
+    padding: unset;
+}
+
+body {
+    background-color: #EEEEEE;
+}
+
+body,
+p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+*,
+*::before,
+*::after {
+    font: inherit;
+    box-sizing: border-box;
+}
