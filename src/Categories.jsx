@@ -1,9 +1,17 @@
 // Imports
-import React from 'react';
+import React, { useState } from 'react';
+import AddCategoryPopup from './AddCategoryPopup';
 import './tracking.css';
 
 // Element
 function Categories(props) {
+
+    let [popupState, setPopupState] = useState(false);
+
+    // Close the Popup
+    function closePopup(e) {
+        setPopupState(false);
+    }
 
     // Map the Categories
     const CATEGORIES = props.categories.map((category, index) => {
@@ -21,7 +29,30 @@ function Categories(props) {
     });
 
     // Render the Element
-    return <ul className="tracking-container__categories"> { CATEGORIES } </ul>;
+    return (
+
+        <>
+    
+            <ul className="tracking-container__categories">
+                
+                { CATEGORIES }
+
+                <li
+                    className="add-new"
+                    onClick={ () => setPopupState(true) }
+                >+ New</li>
+
+
+            </ul>
+            
+            <AddCategoryPopup
+                popupState={ popupState }
+                closePopup={ closePopup }
+            />
+
+        </>
+
+    );
 
 }
 

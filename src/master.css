@@ -24,3 +24,12 @@ p {
     font: inherit;
     box-sizing: border-box;
 }
+
+/* Typography */
+
+h2 {
+    font-size: 21px;
+    line-height: 30px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
