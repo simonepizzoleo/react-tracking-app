@@ -74,6 +74,7 @@ function AddExpense(props) {
                 name="cost"
                 value={ cost }
                 onChange={ (e) => setCost(e.currentTarget.value) }
+                onKeyDown={ handleEnterKey }
             />
 
             <button
