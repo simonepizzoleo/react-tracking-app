@@ -47,6 +47,7 @@ function Categories(props) {
             
             <AddCategoryPopup
                 popupState={ popupState }
+                addNewCategory={ props.addNewCategory }
                 closePopup={ closePopup }
             />
 

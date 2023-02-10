@@ -5,12 +5,25 @@ import './tracking.css';
 // Element
 function AddCategoryPopup(props) {
 
-    // Handle the Input
-    function handleInput(e) {
+    let [name, setName] = useState('');
 
-        let value = e.target.value;
-        value = value.trim();
+    // Handle the Submit
+    function handleSubmit() {
+        
+        let categoryName = name.trim();
+        
+        // If the Name is invalid
+        if (!categoryName || categoryName === '') return;
 
+        // Add the new Category
+        props.addNewCategory(categoryName);
+
+        // Reset the State
+        setName('');
+
+        // Close the Popup
+        props.closePopup();
+    
     }
 
     // Render the Element
@@ -37,12 +50,24 @@ function AddCategoryPopup(props) {
 
                 <h2 className="add-category-popup__heading">Choose a name for your new Category</h2>
                 
-                <input
-                    className="add-category-popup__input"
-                    type="text"
-                    placeholder="Shopping, Sports, Clothing..."
-                    onInput={ (e) => handleInput(e) }
-                />
+                <div className="add-category-popup__flexbox">
+
+                    <input
+                        className="add-category-popup__input"
+                        type="text"
+                        placeholder="Shopping, Sports, Clothing..."
+                        value={ name }
+                        onInput={ (e) => setName(e.currentTarget.value) }
+                        onKeyDown={ (event) => (event.key === 'Enter') ? handleSubmit() : '' }
+                    />
+
+                    <button
+                        className="add-category-popup__button"
+                        type="button"
+                        onClick={ handleSubmit }
+                    >Add new</button>
+
+                </div>
 
             </div>
 

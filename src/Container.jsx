@@ -74,12 +74,27 @@ class Container extends Component {
 
     }
 
+    // Add a new Category
+    addNewCategory(name) {
+
+        const NEW_CATEGORY = {
+            id: uniqid(),
+            name
+        };
+
+        this.setState({
+            categories: [...this.state.categories, NEW_CATEGORY]
+        });
+
+    }
+
     // Render the Element
     render() {
 
         // Bind
         this.handleCategoryClick = this.handleCategoryClick.bind(this);
         this.handleAddNewExpense = this.handleAddNewExpense.bind(this);
+        this.addNewCategory = this.addNewCategory.bind(this);
 
         // Return
         return (
@@ -90,6 +105,7 @@ class Container extends Component {
                     categories={ this.state.categories }
                     activeCategory={ this.state.activeCategory }
                     handleCategoryClick={ this.handleCategoryClick }
+                    addNewCategory={ this.addNewCategory }
                 />
 
                 <Expenses
