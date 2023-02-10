@@ -60,7 +60,6 @@ class Container extends Component {
         
         // Store the passed information
         let { value, cost, activeCategory } = expense;
-        value = value.trim();
 
         const NEW_EXPENSE = {
             id: uniqid(),

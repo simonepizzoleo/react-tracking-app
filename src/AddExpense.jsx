@@ -7,7 +7,7 @@ function AddExpense(props) {
 
     // States
     let [value, setValue] = useState('');
-    const [cost, setCost] = useState(0);
+    let [cost, setCost] = useState(0);
 
     const valueInput = useRef(null);
 
@@ -17,7 +17,9 @@ function AddExpense(props) {
     // Store the new Expense
     function storeExpense() {
 
+        cost = (cost === 0 || !cost) ? 0 : cost;
         value = value.trim();
+
         if (!value || Number.isNaN(cost)) return;
 
         // Call the Function to store a new Expense
